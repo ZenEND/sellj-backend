@@ -9,12 +9,12 @@ import { RegisterDto } from './dto/register.dto';
 export class AuthController {
   @Inject(AuthService) authService: AuthService;
 
-  @Post('login')
+  @Post('sign-in')
   private login(@Body() body: LoginDto): Promise<string | never> {
     return this.authService.login(body);
   }
 
-  @Post('register')
+  @Post('sign-up')
   private register(@Body() body: RegisterDto) {
     return this.authService.register(body);
   }

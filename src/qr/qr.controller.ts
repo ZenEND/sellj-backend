@@ -13,6 +13,11 @@ export class QrController {
     return this.qrservice.getQr(path);
   }
 
+  @Get()
+  getQrs() {
+    return this.qrservice.getQrs();
+  }
+
   @Post()
   generateQr(@Body() body: GenerateQrDto) {
     return this.qrservice.generateQr(body);

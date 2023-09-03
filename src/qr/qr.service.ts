@@ -34,6 +34,10 @@ export class QrService {
     return new StreamableFile(file);
   }
 
+  getQrs() {
+    return this.qrRepository.find();
+  }
+
   async generateQr(data: GenerateQrDto) {
     if (!fs.existsSync(join(process.cwd(), '/src/qr/qr-codes'))) {
       fs.mkdir(join(process.cwd(), '/src/qr/qr-codes'), () => {
