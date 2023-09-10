@@ -8,7 +8,7 @@ import { RolesGuard } from './auth/roles.guard';
 import { QrModule } from './qr/qr.module';
 import { SeedModule } from './seed/seed.module';
 import { OrdersModule } from './orders/orders.module';
-import { GoodModule } from './goods/good.module';
+import { GoodsModule } from './goods/goods.module';
 
 @Module({
   imports: [
@@ -19,7 +19,7 @@ import { GoodModule } from './goods/good.module';
     UsersModule,
     QrModule,
     OrdersModule,
-    GoodModule,
+    GoodsModule,
   ],
   controllers: [],
   providers: [

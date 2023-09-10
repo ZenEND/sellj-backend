@@ -19,12 +19,7 @@ export class RolesGuard extends AuthGuard('jwt') implements IAuthGuard {
     await super.canActivate(context);
     const request = context.switchToHttp().getRequest();
     const { user } = request;
-    if (user) {
-      if (!request.claims) {
-        request.claims = {};
-      }
-      request.claims.id = user?.id;
-    }
+    request.currentUser = user;
 
     const requiredRoles = this.reflector.getAllAndOverride<RolesEnum[]>(
       ROLES_KEY,

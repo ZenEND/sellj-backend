@@ -11,7 +11,7 @@ import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { Roles } from '../auth/roles.decorator';
 import { RolesEnum } from './interfaces/roles.enum';
 import { CreateUserDto } from './dto/create-user.dto';
-import { User } from '../utils/user';
+import { CurrentUser } from '../utils/current-user';
 import { UserEntity } from './user.entity';
 import { CurrentUserInterceptor } from './users.interseptor';
 
@@ -29,8 +29,7 @@ export class UsersController {
 
   @Get('me')
   @UseInterceptors(CurrentUserInterceptor)
-  getMe(@User() user: UserEntity) {
-    console.log(user);
+  getMe(@CurrentUser() user: UserEntity) {
     return this.usersService.findOne(user.id);
   }
 

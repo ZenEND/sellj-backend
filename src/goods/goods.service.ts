@@ -5,7 +5,7 @@ import { Repository } from 'typeorm';
 import { CreateGoodDto } from './dto/create-good.dto';
 
 @Injectable()
-export class GoodService {
+export class GoodsService {
   @InjectRepository(GoodsEntity)
   private readonly goodsRepository: Repository<GoodsEntity>;
   getGoods() {

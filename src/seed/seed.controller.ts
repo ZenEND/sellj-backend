@@ -11,4 +11,9 @@ export class SeedController {
   seedUsers() {
     return this.seedService.seedUsers();
   }
+
+  @Get('goods')
+  seedGoods() {
+    return this.seedService.seedGoods();
+  }
 }
