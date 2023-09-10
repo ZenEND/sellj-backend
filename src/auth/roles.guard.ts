@@ -16,6 +16,16 @@ export class RolesGuard extends AuthGuard('jwt') implements IAuthGuard {
   }
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
+    await super.canActivate(context);
+    const request = context.switchToHttp().getRequest();
+    const { user } = request;
+    if (user) {
+      if (!request.claims) {
+        request.claims = {};
+      }
+      request.claims.id = user?.id;
+    }
+
     const requiredRoles = this.reflector.getAllAndOverride<RolesEnum[]>(
       ROLES_KEY,
       [context.getHandler(), context.getClass()],
@@ -23,8 +33,6 @@ export class RolesGuard extends AuthGuard('jwt') implements IAuthGuard {
     if (!requiredRoles) {
       return true;
     }
-    await super.canActivate(context);
-    const { user } = context.switchToHttp().getRequest();
 
     if (requiredRoles.includes(RolesEnum.Any)) {
       return !!user;
