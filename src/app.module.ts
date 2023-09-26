@@ -9,6 +9,7 @@ import { QrModule } from './qr/qr.module';
 import { SeedModule } from './seed/seed.module';
 import { OrdersModule } from './orders/orders.module';
 import { GoodsModule } from './goods/goods.module';
+import { AppController } from './app.controller';
 
 @Module({
   imports: [
@@ -21,7 +22,7 @@ import { GoodsModule } from './goods/goods.module';
     OrdersModule,
     GoodsModule,
   ],
-  controllers: [],
+  controllers: [AppController],
   providers: [
     {
       provide: APP_GUARD,
